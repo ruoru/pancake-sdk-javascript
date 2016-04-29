@@ -30,7 +30,7 @@ export default class <%= model.name %> {
         'Authorization': this.context.accessToken
       }, commonHeaders),
       body: data
-    );
+    });
     return await this.context.handleRespAndReturn(response);
   }
   /**
@@ -45,7 +45,7 @@ export default class <%= model.name %> {
       headers: Object.assign({
         'Authorization': this.context.accessToken
       }, commonHeaders),
-      body: data,
+      body: data
     });
     return await this.context.handleRespAndReturn(response);
   }
