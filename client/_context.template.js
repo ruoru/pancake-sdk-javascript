@@ -22,11 +22,17 @@ export default class Context {
       throw err;
     }
   }
+  /**
+   * @method getAccessToken
+   */
   async getAccessToken() {
-    return await this.storage.get('weflex.access_token');
+    return await this.storage.getItem('weflex.access_token');
   }
+  /**
+   * @method getUserId
+   */
   async getUserId() {
-    return await this.storage.get('weflex.user_id');
+    return await this.storage.getItem('weflex.user_id');
   }
 }
 

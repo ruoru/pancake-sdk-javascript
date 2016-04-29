@@ -23,6 +23,26 @@ function loadModels(config) {
   }, []);
 }
 
+function loadMiddlewares(config) {
+  let middlewares = [];
+  for (let name in config.routes) {
+    if (name.indexOf('#') !== -1) {
+      continue;
+    }
+    let route = config.routes[name];
+    const names = /\.\/middleware\/([^\/]*)\/?(.*)/.exec(name);
+    route.name = names[1];
+    route.scope = names[2];
+    route.path = route.paths[0] || '/';
+    route.method = 'get';
+    if (route.methods && route.methods.length) {
+      route.method = route.methods[0].toLowerCase();
+    }
+    middlewares.push(route);
+  }
+  return middlewares;
+}
+
 module.exports = function(root) {
   let cwd = process.cwd();
   cwd = path.join(cwd, root);
@@ -30,8 +50,9 @@ module.exports = function(root) {
 
   const config = require(path.join(cwd, './config.json'));
   const modelConfig = require(path.join(cwd, '/model-config.json'));
-  const middlewares = require(path.join(cwd, '/middleware.json'));
+  const middlewareConfig = require(path.join(cwd, '/middleware.json'));
   const models = loadModels(modelConfig);
+  const middlewares = loadMiddlewares(middlewareConfig);
   
   const results = models.filter((m) => {
     const conf = modelConfig[m.name];
@@ -49,7 +70,8 @@ module.exports = function(root) {
 
   // build index
   const indexSource = ejs.render(INDEX_TEMPLATE_JS, {
-    models: results
+    models: results,
+    middlewares: middlewares
   });
   fs.writeFileSync(path.join(__dirname, './build/index.js'), indexSource);
 

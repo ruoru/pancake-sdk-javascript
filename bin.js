@@ -4,7 +4,7 @@
 
 const exec = require('child_process').execSync;
 const argv = require('minimist')(process.argv.slice(2));
-const build = require('./index.js');
+const build = require('./builder.js');
 
 build(argv._[0]);
 const results = exec('npm run build', {
