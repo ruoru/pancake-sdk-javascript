@@ -35,7 +35,7 @@ export default function(gateway) {
         app.middlewares.<%= m.name %>['<%= m.scope %>'] = fetch;
       <% } %>
     })();
-  <% }) %>
+  <% }); %>
 
   return app;
 }

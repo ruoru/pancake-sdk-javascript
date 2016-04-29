@@ -1,11 +1,10 @@
 {
   "name": "pancake-sdk-javascript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript SDK builder for Pancake",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack -p",
-    "prepublish": "npm run build"
+    "build": "./node_modules/.bin/webpack -p"
   },
   "bin": {
     "pancake-sdk-javascript": "./bin.js"
