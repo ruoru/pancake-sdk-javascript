@@ -2,7 +2,7 @@
 
 import Context from './context';
 <% models.forEach(function(m) { %>
-  import <%= m.name %> from './rest.<%= m.plural %>.js';
+  import <%= m.name %> from './rest.<%= m.name.toLowerCase() %>.js';
 <% }) %>
 
 export default function(gateway) {
