@@ -27,7 +27,7 @@ export default class <%= model.name %> {
     const response = await fetch(this.url, {
       method: 'post',
       headers: Object.assign({
-        'Authorization': this.context.accessToken
+        'Authorization': await this.context.getAccessToken()
       }, commonHeaders),
       body: data
     });
@@ -43,7 +43,7 @@ export default class <%= model.name %> {
     const response = await fetch(`${this.url}/${id}`, {
       method: 'put',
       headers: Object.assign({
-        'Authorization': this.context.accessToken
+        'Authorization': this.context.getAccessToken()
       }, commonHeaders),
       body: data
     });
@@ -62,7 +62,22 @@ export default class <%= model.name %> {
     const response = await fetch(url, {
       method: 'get',
       headers: Object.assign({
-        'Authorization': this.context.accessToken
+        'Authorization': this.context.getAccessToken()
+      }, commonHeaders)
+    });
+    return await this.context.handleRespAndReturn(response);
+  }
+  /**
+   * @method delete
+   * @async
+   * @param {String} id - the id to be deleted
+   */
+  async delete(id) {
+    const url = `${this.url}/${id}`;
+    const response = await fetch(url, {
+      method: 'delete',
+      headers: Object.assign({
+        'Authorization': this.context.getAccessToken()
       }, commonHeaders)
     });
     return await this.context.handleRespAndReturn(response);
