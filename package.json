@@ -1,0 +1,32 @@
+{
+  "name": "pancake-sdk-javascript",
+  "version": "1.0.0",
+  "description": "JavaScript SDK builder for Pancake",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "pancake-sdk-javascript": "./bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/weflex/pancake-sdk-javascript.git"
+  },
+  "keywords": [
+    "pancake",
+    "sdk",
+    "javascript"
+  ],
+  "author": "Yorkie Liu <yorkiefixer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weflex/pancake-sdk-javascript/issues"
+  },
+  "homepage": "https://github.com/weflex/pancake-sdk-javascript#readme",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "glob": "^7.0.3",
+    "minimist": "^1.2.0"
+  }
+}
