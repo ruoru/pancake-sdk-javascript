@@ -13,6 +13,7 @@ $ npm install pancake-sdk-javascript -g
 
 ```sh
 pancake-sdk-javascript ./serverdir --output ./libpancake.js
+```
 
 ## License
 
